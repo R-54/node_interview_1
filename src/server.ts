@@ -1,8 +1,8 @@
 import { createHandler } from "graphql-http/lib/use/express";
 import express from "express";
 import { ruruHTML } from "ruru/server";
-import { schema } from "./schemas/schema.js";
-import { resolver } from "./resolvers/resolver.js";
+import { schema } from "./schemas/schema";
+import { resolver } from "./resolvers/resolver";
 
 const app = express();
 
@@ -12,7 +12,6 @@ app.all(
   createHandler({
     schema: schema,
     rootValue: resolver,
-    graphiql: true,
   })
 );
 
