@@ -1,0 +1,1 @@
+Start the app with: npm start
