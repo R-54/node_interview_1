@@ -1,21 +1,26 @@
 import { buildSchema } from "graphql";
 
 export const schema = buildSchema(`
-  type Book {
-    id: ID,
-    title: String,
-    author: String,
-    genre: String,
-    year: Int
+  type Movie {
+    id: ID!,
+    title: String!,
+    year: Int!,
+    genre: String!
   }
 
-  type Query { 
-    books: [Book],
-    book(id: Int!): Book,
-    booksByGenre(genre: String!): [Book]
+  input MovieInput {
+    title: String,
+    year: Int,
+    genre: String
+  }
+
+  type Query {
+    movies: [Movie],
+    movie(id: Int!): Movie,
+    moviesByGenre(genre: String!): [Movie]
   }
 
   type Mutation {
-    addBook(title: String!, author: String!, genre: String!, year: Int!): Book
+    addMovie(movie: MovieInput!): Movie!
   }
 `);
